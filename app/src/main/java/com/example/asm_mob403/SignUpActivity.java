@@ -91,7 +91,7 @@ public class SignUpActivity extends AppCompatActivity {
             if (Integer.parseInt(thanhcong) == 1)//thanh cong
             {
                 Toast.makeText(this, "Đăng kí thành công", Toast.LENGTH_SHORT).show();
-                finish();
+
             } else //that bai
             {
                 Toast.makeText(this, "Đăng kí thất bại", Toast.LENGTH_SHORT).show();
