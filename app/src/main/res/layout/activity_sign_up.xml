@@ -47,6 +47,7 @@
         android:layout_marginTop="17dp"
         android:layout_marginLeft="44dp"
         android:layout_marginRight="44dp"
+        android:inputType="textPassword"
         android:background="@drawable/edittext_login"/>
 
     <LinearLayout
