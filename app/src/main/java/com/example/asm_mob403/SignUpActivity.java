@@ -91,7 +91,7 @@ public class SignUpActivity extends AppCompatActivity {
             if (Integer.parseInt(thanhcong) == 1)//thanh cong
             {
                 Toast.makeText(this, "Đăng kí thành công", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             } else //that bai
@@ -104,13 +104,13 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+        Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
 
     public void cancel(View view) {
-        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+        Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
     }

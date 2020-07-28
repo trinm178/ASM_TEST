@@ -23,7 +23,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     EditText edtEmail, edtPass;
 //    String loginURL = "http://10.82.175.119/minhtri_ps09376/index.php";
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this, "Volley error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Volley error", Toast.LENGTH_SHORT).show();
                         Log.d("loi",error.toString());
                     }
                 }
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                         return param;
                     }
                 };
-                Volley.newRequestQueue(MainActivity.this).add(stringrequest);
+                Volley.newRequestQueue(LoginActivity.this).add(stringrequest);
             }
         });
     }
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 name = user.getString("name");
                 email = user.getString("email");
                 Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 intent.putExtra("name",name);
                 intent.putExtra("email",email);
 
@@ -115,12 +115,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void register(View view) {
-        Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+        Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
         startActivity(intent);
         finish();
     }
     public void login(View view) {
-        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+        Intent intent = new Intent(LoginActivity.this, DanhSachUser.class);
         startActivity(intent);
         finish();
     }

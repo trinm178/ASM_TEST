@@ -10,52 +10,79 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Singup!"
+        android:text="Thêm sinh viên!"
         android:textColor="@color/white"
         android:textSize="48dp"
         android:layout_marginTop="32dp"
         android:layout_marginLeft="44dp"/>
     <EditText
-        android:id="@+id/edtNameSignUp"
+        android:id="@+id/edtNameSV"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Tên"
         android:textSize="18dp"
         android:paddingLeft="15dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="100dp"
         android:layout_marginLeft="44dp"
         android:layout_marginRight="44dp"
-        android:background="@drawable/edittext_login"/>
+        android:background="@drawable/edt_them_sv"/>
+
     <EditText
-        android:id="@+id/edtEmailSignUp"
+        android:id="@+id/edtCodeSV"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Email"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginRight="44dp"
+        android:background="@drawable/edt_them_sv"
+        android:hint="Mã số SV"
+        android:paddingLeft="15dp"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/edtBirthSV"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Năm sinh"
         android:textSize="18dp"
         android:paddingLeft="15dp"
         android:layout_marginTop="17dp"
         android:layout_marginLeft="44dp"
         android:layout_marginRight="44dp"
-        android:background="@drawable/edittext_login"/>
+        android:inputType="number"
+        android:background="@drawable/edt_them_sv"/>
     <EditText
-        android:id="@+id/edtPassSignUp"
+        android:id="@+id/edtPhoneSV"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Password"
+        android:hint="Phone"
         android:textSize="18dp"
         android:paddingLeft="15dp"
         android:layout_marginTop="17dp"
         android:layout_marginLeft="44dp"
         android:layout_marginRight="44dp"
-        android:inputType="textPassword"
-        android:background="@drawable/edittext_login"/>
+        android:inputType="number"
+        android:background="@drawable/edt_them_sv"/>
+
+    <EditText
+        android:id="@+id/edtEmailSV"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Địa chỉ mail"
+        android:textSize="18dp"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+        android:background="@drawable/edt_them_sv"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/btnSignup"
+            android:id="@+id/btnThemSinhVien"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:text="Đăng kí"
@@ -78,29 +105,6 @@
             android:layout_marginLeft="22dp">
         </Button>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="80dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bạn đã có tài khoản?"
-            android:textColor="@android:color/black"
-            android:textSize="18dp">
-        </TextView>
-        <TextView
-            android:onClick="login"
-            android:id="@+id/tvLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" Đăng nhập."
-            android:textColor="@color/red"
-            android:textSize="18dp"
-            >
-        </TextView>
-    </LinearLayout>
+
 
 </LinearLayout>
