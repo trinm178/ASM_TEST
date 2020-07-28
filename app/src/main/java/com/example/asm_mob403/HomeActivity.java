@@ -1,86 +1,74 @@
 package com.example.asm_mob403;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.Menu;
-import android.widget.TextView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import org.w3c.dom.Text;
+import android.os.Bundle;
+import android.widget.Adapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.asm_mob403.adapter.AdapterData;
+import com.example.asm_mob403.model.Users;
+import com.google.gson.JsonObject;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
-    String pName = "", pEmail = "";
-    TextView tvName, tvEmail;
-    private AppBarConfiguration mAppBarConfiguration;
-
+    String URL = "http://192.168.1.224/minhtri_ps09376/getdata.php";
+    ListView lvdata;
+    ArrayList<Users> usersArrayList;
+    AdapterData adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        //
-        Intent intent = getIntent();
-        pName = intent.getStringExtra("name");
-        pEmail = intent.getStringExtra("email");
-        // Log.d("aaaa", intent.getStringExtra("name"));
+        lvdata = findViewById(R.id.lvItem);
+        usersArrayList = new ArrayList<>();
 
+        adapter = new AdapterData(this, R.layout.item_data, usersArrayList);
+        lvdata.setAdapter(adapter);
+        getData(URL);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+    }
+
+    private void getData(String URL) {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onResponse(JSONArray response) {
+               for (int i = 0; i < response.length(); i++){
+                   try {
+                       JSONObject object = response.getJSONObject(i);
+                       usersArrayList.add(new Users(object.getInt("id"),
+                               object.getString("name"),
+                               object.getString("email"),
+                               object.getString("password"),
+                               object.getString("create_date"),
+                               object.getString("update_date")));
+
+                   } catch (Exception e) {
+                        e.printStackTrace();
+                   }
+               }
+               adapter.notifyDataSetChanged();
             }
-        });
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home,  R.id.nav_product, R.id.nav_order, R.id.nav_noti, R.id.nav_report, R.id.nav_setting)
-                .setDrawerLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
 
-        //          draw navigationView
-        View header = navigationView.getHeaderView(0);
-        tvName = (TextView) header.findViewById(R.id.tvNameDraw);
-        tvEmail = (TextView) header.findViewById(R.id.tvEmailDraw);
-        tvName.setText(pName);
-        tvEmail.setText(pEmail);
-
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequest);
     }
 }
