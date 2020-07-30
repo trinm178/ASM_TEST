@@ -1,14 +1,16 @@
 package com.example.asm_mob403.model;
 
-public class SinhVien {
+import java.io.Serializable;
+
+public class SinhVien implements Serializable {
     int id;
     String name;
     String students_code;
-    int birthday;
-    int phone;
+    String birthday;
+    String phone;
     String address;
 
-    public SinhVien(int id, String name, String students_code, int birthday, int phone, String address) {
+    public SinhVien(int id, String name, String students_code, String birthday, String phone, String address) {
         this.id = id;
         this.name = name;
         this.students_code = students_code;
@@ -41,19 +43,19 @@ public class SinhVien {
         this.students_code = students_code;
     }
 
-    public int getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(int birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

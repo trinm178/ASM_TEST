@@ -2,8 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_addsv"
         android:orderInCategory="100"
-        android:title="@string/action_changepass"
+        android:title="Thêm"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_danhsachuser"
+        android:orderInCategory="100"
+        android:title="Danh sách User"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_doimk"
+        android:orderInCategory="100"
+        android:title="Đổi mật khẩu"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="100"
+        android:title="Đăng xuất"
         app:showAsAction="never" />
 </menu>

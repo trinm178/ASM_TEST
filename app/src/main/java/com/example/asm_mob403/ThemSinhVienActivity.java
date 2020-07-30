@@ -23,7 +23,9 @@ import java.util.Map;
 public class ThemSinhVienActivity extends AppCompatActivity {
     EditText edtName, edtCode, edtBirth, edtPhone, edtEmail;
     Button btnThemSinhVien;
-    String Url = "http://192.168.1.224/minhtri_ps09376/insert.php";
+     String Url = "http://192.168.1.224/minhtri_ps09376/insert.php";
+
+    //String Url = "http://10.82.190.82/minhtri_ps09376/insert.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +46,7 @@ public class ThemSinhVienActivity extends AppCompatActivity {
                 String birth = edtName.getText().toString().trim();
                 String phone = edtName.getText().toString().trim();
                 String email = edtName.getText().toString().trim();
-                if (name.isEmpty() || code.isEmpty() || birth.isEmpty() ||phone.isEmpty() ||email.isEmpty()) {
+                if (name.isEmpty() || code.isEmpty() || birth.isEmpty() || phone.isEmpty() || email.isEmpty()) {
                     Toast.makeText(ThemSinhVienActivity.this, "Vui lòng nhập đủ dữ liệu!", Toast.LENGTH_SHORT).show();
                 } else {
                     ThemSinhVien(Url);
@@ -71,7 +73,7 @@ public class ThemSinhVienActivity extends AppCompatActivity {
                 Toast.makeText(ThemSinhVienActivity.this, "Lỗi !!", Toast.LENGTH_SHORT).show();
             }
         }
-        ){
+        ) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();

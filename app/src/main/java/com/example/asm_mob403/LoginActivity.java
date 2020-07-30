@@ -26,8 +26,9 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     EditText edtEmail, edtPass;
-//    String loginURL = "http://10.82.175.119/minhtri_ps09376/index.php";
+    //   String loginURL = "http://10.82.190.82/minhtri_ps09376/index.php";
     String loginURL = "http://192.168.1.224/minhtri_ps09376/index.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,19 +55,19 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(LoginActivity.this, "Volley error", Toast.LENGTH_SHORT).show();
-                        Log.d("loi",error.toString());
+                        Log.d("loi", error.toString());
                     }
                 }
                 ) {
 
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String,String> param=new HashMap<String,String>();
+                        Map<String, String> param = new HashMap<String, String>();
 
 
-                        param.put("email",edtEmail.getText().toString());
-                        param.put("password",edtPass.getText().toString());
-                        param.put("tag","login");
+                        param.put("email", edtEmail.getText().toString());
+                        param.put("password", edtPass.getText().toString());
+                        param.put("tag", "login");
 
                         return param;
                     }
@@ -77,34 +78,31 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void xulyLogin(String response) {
-        String thanhcong="";
+        String thanhcong = "";
         String name = "";
         String email = "";
         try {
-            JSONObject jsonobject=new JSONObject(response);
-            thanhcong=jsonobject.getString("thanhcong");
-
-
+            JSONObject jsonobject = new JSONObject(response);
+            thanhcong = jsonobject.getString("thanhcong");
 
 
             //doc tat ca du lieu tu json bo vao ArrayList
-            if(Integer.parseInt(thanhcong)==1)//thanh cong
+            if (Integer.parseInt(thanhcong) == 1)//thanh cong
             {
                 JSONObject user = jsonobject.getJSONObject("users");
                 name = user.getString("name");
                 email = user.getString("email");
                 Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                intent.putExtra("name",name);
-                intent.putExtra("email",email);
+                intent.putExtra("name", name);
+                intent.putExtra("email", email);
 
 //                Bundle bundle = new Bundle();
 //                bundle.putString("name1",name);
 //                HomeFragment homeFragment = new HomeFragment();
 //                homeFragment.setArguments(bundle);
                 startActivity(intent);
-            }
-            else //that bai
+            } else //that bai
             {
 //                Log.d("login","LoginFail");
                 Toast.makeText(this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
@@ -119,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
     public void login(View view) {
         Intent intent = new Intent(LoginActivity.this, DanhSachUser.class);
         startActivity(intent);

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@drawable/background"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sửa sinh viên!"
+        android:textColor="@color/white"
+        android:textSize="48dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="44dp"/>
+    <EditText
+        android:id="@+id/edtSuaNameSV"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Tên"
+        android:textSize="18dp"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+        android:background="@drawable/edt_them_sv"/>
+
+    <EditText
+        android:id="@+id/edtSuaCodeSV"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginRight="44dp"
+        android:background="@drawable/edt_them_sv"
+        android:hint="Mã số SV"
+        android:paddingLeft="15dp"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/edtSuaBirthSV"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Năm sinh"
+        android:textSize="18dp"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+        android:inputType="number"
+        android:background="@drawable/edt_them_sv"/>
+    <EditText
+        android:id="@+id/edtSuaPhoneSV"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Phone"
+        android:textSize="18dp"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+        android:inputType="number"
+        android:background="@drawable/edt_them_sv"/>
+
+    <EditText
+        android:id="@+id/edtSuaAddressSV"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Địa chỉ mail"
+        android:textSize="18dp"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+        android:background="@drawable/edt_them_sv"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnSuaSinhVien"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Sửa"
+            android:textSize="24dp"
+            android:textAllCaps="false"
+            android:background="@drawable/button_login"
+            android:layout_marginTop="17dp"
+            android:layout_marginLeft="44dp">
+        </Button>
+        <Button
+            android:onClick="cancel"
+            android:id="@+id/btnCancel"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Hủy"
+            android:textSize="24dp"
+            android:textAllCaps="false"
+            android:background="@drawable/button_login"
+            android:layout_marginTop="17dp"
+            android:layout_marginLeft="22dp">
+        </Button>
+    </LinearLayout>
+
+
+</LinearLayout>
